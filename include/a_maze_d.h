@@ -8,7 +8,7 @@
 #ifndef A_MAZE_D_A_MAZE_D_H
     #define A_MAZE_D_A_MAZE_D_H
     #include <stdio.h>
-#define EXIT_FAILURE_TECH 84
+    #define EXIT_FAILURE_TECH 84
     #define EXIT_SUCCESS_TECH 0
 
 typedef struct {
