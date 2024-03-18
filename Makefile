@@ -30,7 +30,7 @@ T_BDIR	=	.buildTests
 NAME	=	amazed
 T_NAME	=	unit_tests
 
-SRC = ./sources/a-maze-d.c
+SRC = ./sources/a_maze_d.c
 
 T_SRC	:=	$(SRC)
 

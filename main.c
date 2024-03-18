@@ -5,7 +5,7 @@
 ** main header
 */
 
-#include "a-maze-d.h"
+#include "a_maze_d.h"
 
 int main(int argc, char const **argv)
 {

@@ -67,7 +67,7 @@ jobs:
         run: nix-shell --run "make"
 
       - name: Check for banned functions
-        run: nix run github:dawoox/efc mysh
+        run: nix run github:dawoox/efc amazed
 
   mirror:
     needs: [ coding_style, banned_function_checker ]
