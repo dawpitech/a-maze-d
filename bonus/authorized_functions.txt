@@ -3,3 +3,5 @@ write
 malloc
 free
 getline
+# DO NOT USE FUNCTIONS BELOW
+memset
