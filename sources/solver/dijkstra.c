@@ -62,20 +62,22 @@ void update_linked_nodes(maze_t *maze, int node, dijkstra_utils_t *d)
     }
 }
 
-route_t *dijkstra(maze_t *maze, int source, int destination)
+static
+void destroy_dijkstra_utils(dijkstra_utils_t *d)
 {
-    dijkstra_utils_t *d = init_dijkstra_utils((int) maze->matrix_size);
-    route_t *route = malloc(sizeof(route_t));
-    int min_distance_node;
+    free(d->dst_frm_src);
+    free(d->prev);
+    free(d->vst);
+    free(d);
+}
 
-    if (d == NULL || route == NULL)
+static
+route_t *generate_route(int destination, dijkstra_utils_t *d)
+{
+    route_t *route = malloc(sizeof(route_t));
+
+    if (route == NULL)
         return NULL;
-    d->dst_frm_src[source] = 0;
-    for (int count = 0; count < maze->matrix_size - 1; count++) {
-        min_distance_node = search_nearest_node(maze, d);
-        d->vst[min_distance_node] = true;
-        update_linked_nodes(maze, min_distance_node, d);
-    }
     route->weight = d->dst_frm_src[destination];
     route->nodes = malloc(sizeof(int) * (route->weight + 1));
     route->nodes[route->weight] = destination;
@@ -83,5 +85,22 @@ route_t *dijkstra(maze_t *maze, int source, int destination)
         route->nodes[route->weight - idx - 1] = d->prev[destination];
         destination = d->prev[destination];
     }
+    destroy_dijkstra_utils(d);
     return route;
+}
+
+route_t *dijkstra(maze_t *maze, int source, int destination)
+{
+    dijkstra_utils_t *d = init_dijkstra_utils((int) maze->matrix_size);
+    int min_distance_node;
+
+    if (d == NULL)
+        return NULL;
+    d->dst_frm_src[source] = 0;
+    for (int count = 0; count < maze->matrix_size - 1; count++) {
+        min_distance_node = search_nearest_node(maze, d);
+        d->vst[min_distance_node] = true;
+        update_linked_nodes(maze, min_distance_node, d);
+    }
+    return generate_route(destination, d);
 }
