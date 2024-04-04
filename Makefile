@@ -31,6 +31,7 @@ NAME	=	amazed
 T_NAME	=	unit_tests
 
 SRC = ./sources/a_maze_d.c
+SRC += ./sources/solver/dijkstra.c
 
 T_SRC	:=	$(SRC)
 
