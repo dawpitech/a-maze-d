@@ -48,7 +48,8 @@ int route_weight(maze_t *maze, int node, dijkstra_utils_t *d, int idx)
 }
 
 static
-void update_linked_nodes(maze_t *maze, int node, dijkstra_utils_t *d) {
+void update_linked_nodes(maze_t *maze, int node, dijkstra_utils_t *d)
+{
     for (int index = 0; index < maze->matrix_size; index++) {
         if (d->vst[index] || maze->matrix[node][index] == NO_LINKS_TO_NODE)
             continue;

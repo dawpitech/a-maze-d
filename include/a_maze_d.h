@@ -17,5 +17,6 @@ typedef struct {
     int *starts;
     int *ends;
 } maze_t;
-int amazed(__attribute__((unused)) int argc, __attribute__((unused)) char const **argv);
+int amazed(__attribute__((unused)) int argc,
+    __attribute__((unused)) char const **argv);
 #endif //A_MAZE_D_A_MAZE_D_H
