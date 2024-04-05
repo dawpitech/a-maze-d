@@ -66,3 +66,5 @@ unit_tests
 *.bin
 .cache
 compile_commands.json
+*.log
+*.*~

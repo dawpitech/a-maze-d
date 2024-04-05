@@ -21,5 +21,6 @@ typedef struct {
     unsigned int weight;
     int *nodes;
 } route_t;
+void free_route(route_t *route);
 route_t *dijkstra(maze_t *maze, int source, int destination);
 #endif //A_MAZE_D_DIJKSTRA_H

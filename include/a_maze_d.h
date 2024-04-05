@@ -15,7 +15,9 @@ typedef struct {
     ssize_t matrix_size;
     int **matrix;
     int *starts;
+    int nstarts;
     int *ends;
+    int nends;
 } maze_t;
 int amazed(__attribute__((unused)) int argc,
     __attribute__((unused)) char const **argv);

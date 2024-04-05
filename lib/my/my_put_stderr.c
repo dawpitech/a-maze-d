@@ -21,5 +21,6 @@ ssize_t my_put_stderr(char const *str)
     if (str == NULL)
         return write(STDERR_FILENO, NULL_MSG, my_strlen(NULL_MSG));
     len = my_strlen(str);
-    return write(STDERR_FILENO, str, len);
+    write(STDERR_FILENO, str, len);
+    return 84;
 }

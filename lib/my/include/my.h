@@ -37,6 +37,7 @@ void my_sort_int_array(int *, int);
 char *my_strcapitalize(char *);
 char *my_strcat(char *, char const *);
 int my_strcmp(char const *, char const *);
+long my_getnbr_long(char const *str);
 char *my_strcpy(char *, char const *);
 int my_str_isalpha(char const *);
 int my_str_islower(char const *);
@@ -55,4 +56,6 @@ int my_show_word_array(char *const *);
 char *my_strdup(char const *);
 int my_putnbr_base(long long nb, char **base);
 ssize_t my_put_stderr(char const *str);
+void *my_realloc(void *ptr, size_t new_size, size_t old_size);
+void my_memcpy(void *dest, void *src, size_t size);
 #endif

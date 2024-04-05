@@ -62,6 +62,12 @@ void update_linked_nodes(maze_t *maze, int node, dijkstra_utils_t *d)
     }
 }
 
+void free_route(route_t *route)
+{
+    free(route->nodes);
+    free(route);
+}
+
 static
 void destroy_dijkstra_utils(dijkstra_utils_t *d)
 {
