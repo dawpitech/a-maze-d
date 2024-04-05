@@ -10,7 +10,6 @@
     #include <stdio.h>
     #define EXIT_FAILURE_TECH 84
     #define EXIT_SUCCESS_TECH 0
-
 typedef struct {
     unsigned int nrobots;
     ssize_t matrix_size;
@@ -18,6 +17,6 @@ typedef struct {
     int *starts;
     int *ends;
 } maze_t;
-
-int amazed(int argc, char const **argv);
+int amazed(__attribute__((unused)) int argc,
+    __attribute__((unused)) char const **argv);
 #endif //A_MAZE_D_A_MAZE_D_H

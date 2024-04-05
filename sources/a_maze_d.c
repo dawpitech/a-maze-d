@@ -7,7 +7,8 @@
 
 #include "a_maze_d.h"
 
-int amazed(int argc, char const **argv)
+int amazed(__attribute__((unused)) int argc,
+    __attribute__((unused)) char const **argv)
 {
     return EXIT_SUCCESS_TECH;
 }
