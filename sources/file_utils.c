@@ -103,11 +103,7 @@ int fs_read_stdin(char **buffer)
     int s = 0;
     char *ret = 0;
     int err = 1;
-    struct stat fstat_;
 
-    err = stat("/dev/stdin", &fstat_);
-    if (err == -1 || !S_ISFIFO(fstat_.st_mode))
-        return 84;
     if (all_buffer(buffer))
         return 84;
     ret = read_stdin_buf(buffer, &err, err_t, s);
