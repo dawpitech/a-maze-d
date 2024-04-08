@@ -31,7 +31,7 @@ static void populate_matrix(maze_t *maze, int n1, int n2)
     }
     maze->matrix = malloc(sizeof(int *) * (maze->matrix_size + 1));
     my_memset(maze->matrix, 0, sizeof(int *) * (maze->matrix_size + 1));
-    for (int i = 0; i < maze->matrix_size; i++) {
+    for (int i = 0; i < (maze->matrix_size + 1); i++) {
         maze->matrix[i] = malloc(sizeof(int) * (maze->matrix_size + 1));
         my_memset(maze->matrix[i], 0, sizeof(int) * (maze->matrix_size + 1));
         maze->matrix[i][i] = -1;
