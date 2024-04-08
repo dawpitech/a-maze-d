@@ -22,6 +22,21 @@ static void show_route(route_t *route)
     }
 }
 
+static __attribute__((unused)) void show_matrix(maze_t *maze)
+{
+    my_printf("    ");
+    for (int i = 0; i < maze->matrix_size; i++)
+        my_printf("%d ", i);
+    my_printf("\n");
+    for (int j = 0; j < maze->matrix_size; j++) {
+        my_printf("%d | ", j);
+        for (int k = 0; k < maze->matrix_size; k++) {
+            my_printf("%d ", maze->matrix[j][k]);
+        }
+        my_printf("\n");
+    }
+}
+
 int amazed(__attribute__((unused)) int argc,
     __attribute__((unused)) char const **argv)
 {

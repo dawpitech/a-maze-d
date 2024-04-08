@@ -36,6 +36,7 @@ static void populate_matrix(maze_t *maze, int n1, int n2)
         my_memset(maze->matrix[i], 0, sizeof(int) * (maze->matrix_size + 1));
         maze->matrix[i][i] = -1;
     }
+    populate_matrix(maze, n1, n2);
 }
 
 static int print_tun(void)
@@ -162,6 +163,7 @@ maze_t *parser_get_maze(char *buffer, unsigned int ants)
     if (parse_lines(maze, buffer))
         return NULL;
     maze->nrobots = ants;
+    maze->matrix_size++;
     my_printf("#moves\n");
     return maze;
 }
