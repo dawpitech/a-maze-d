@@ -6,6 +6,7 @@
 */
 
 #include "a_maze_d.h"
+#include "my.h"
 #include "file_utils.h"
 #include "my_printf.h"
 #include "dijkstra.h"
@@ -13,12 +14,26 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-static void show_route(route_t *route)
+static void show_route(route_t *route, maze_t *maze)
 {
-    if (route->weight != INT32_MAX) {
-        my_printf("Route -> ");
-        for (int i = 0; i <= (int) route->weight; i++)
-            my_printf("%d ", route->nodes[i]);
+    char c = 0;
+
+    if (route->weight >= INT32_MAX)
+        return;
+    for (unsigned int j = 0; j < maze->nrobots; j++) {
+        for (unsigned int i = 0; i <= j; i++) {
+            c = ((i + 1) > j) ? '\n' : ' ';
+            my_printf("P%d-%d", (i + 1), route->nodes[(j - i)]);
+            my_putchar(c);
+        }
+    }
+    for (unsigned int j = 1; j < maze->nrobots; j++) {
+        for (unsigned int i = j; i < maze->nrobots; i++) {
+            c = ((i + 1) >= maze->nrobots) ? '\n' : ' ';
+            my_printf("P%d-%d", (i + 1),
+                route->nodes[(maze->nrobots - 1) + (j - i)]);
+            my_putchar(c);
+        }
     }
 }
 
@@ -53,7 +68,7 @@ int amazed(__attribute__((unused)) int argc,
     route = dijkstra(maze, maze->starts[0], maze->ends[0]);
     if (route == NULL)
         return EXIT_FAILURE_TECH;
-    show_route(route);
+    show_route(route, maze);
     free(buffer);
     free_maze(maze);
     free_route(route);
