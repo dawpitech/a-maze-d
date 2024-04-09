@@ -36,6 +36,7 @@ SRC += ./sources/parser.c
 SRC += ./sources/solver/dijkstra.c
 
 T_SRC	:=	$(SRC)
+T_SRC	+= ./tests/tests_amazed.c
 
 SRC	+=	./main.c
 
