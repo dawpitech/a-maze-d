@@ -160,6 +160,9 @@ maze_t *parser_get_maze(char *buffer, unsigned int ants)
         return NULL;
     my_memset(maze, 0, sizeof(maze_t));
     my_printf("#number_of_robots\n%d\n#rooms\n", ants);
+    for (int i = 0; buffer[i] != '\0' && buffer[i] != '\n'; i++)
+        if (buffer[i] == '#')
+            buffer = my_strstr(&buffer[i], "\n") + 1;
     if (parse_lines(maze, buffer))
         return NULL;
     maze->nrobots = ants;

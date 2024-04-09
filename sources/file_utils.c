@@ -37,6 +37,9 @@ int fs_get_number_from_first_line(char *buffer, unsigned int *r)
     int l = 0;
     int minus = 1;
 
+    for (int i = 0; buffer[i] != '\0' && buffer[i] != '\n'; i++)
+        if (buffer[i] == '#')
+            buffer = my_strstr(&buffer[i], "\n") + 1;
     for (int k = 0; buffer[k] != '\n' && buffer[k] != '\0'; k++) {
         if (!IS_NUM(buffer[k]))
             break;
