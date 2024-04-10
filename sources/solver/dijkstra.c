@@ -82,7 +82,7 @@ route_t *generate_route(int destination, dijkstra_utils_t *d)
 {
     route_t *route = malloc(sizeof(route_t));
 
-    if (route == NULL)
+    if (route == NULL || d->prev[destination] == NO_PREV)
         return NULL;
     route->weight = d->dst_frm_src[destination];
     route->nodes = malloc(sizeof(int) * (route->weight + 1));
