@@ -19,6 +19,7 @@ void exec_while_routing_to_end(route_t *route, maze_t *maze, int *pos,
     bool *can_start_another_robot)
 {
     bool is_first_on_line = true;
+
     for (int i = 0; i < (int) maze->nrobots; i++) {
         if (pos[i] == (int) route->weight)
             continue;
