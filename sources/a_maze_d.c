@@ -16,28 +16,15 @@
 
 static void show_route(route_t *route, maze_t *maze)
 {
-    char c = 0;
-
-    if (route->weight >= INT32_MAX)
-        return;
-    for (unsigned int j = 0; j < maze->nrobots; j++) {
-        for (unsigned int i = 0; i <= j; i++) {
-            c = ((i + 1) > j) ? '\n' : ' ';
-            my_printf("P%d-%d", (i + 1), route->nodes[(j - i)]);
-            my_putchar(c);
-        }
-    }
-    for (unsigned int j = 1; j < maze->nrobots; j++) {
-        for (unsigned int i = j; i < maze->nrobots; i++) {
-            c = ((i + 1) >= maze->nrobots) ? '\n' : ' ';
-            my_printf("P%d-%d", (i + 1),
-                route->nodes[(maze->nrobots - 1) + (j - i)]);
-            my_putchar(c);
+    for (int i = 0; i < maze->nrobots; i++) {
+        for (int j = 0; j <= route->weight; j++) {
+            printf("P%d-%d\n", i, route->nodes[j]);
         }
     }
 }
 
-static __attribute__((unused)) void show_matrix(maze_t *maze)
+static __attribute__((unused))
+void show_matrix(maze_t *maze)
 {
     my_printf("    ");
     for (int i = 0; i < maze->matrix_size; i++)
