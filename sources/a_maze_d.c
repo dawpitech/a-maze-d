@@ -50,7 +50,8 @@ int amazed(__attribute__((unused)) int argc,
     if (fs_read_stdin(&buffer) || fs_get_number_from_first_line(buffer, &r))
         return EXIT_FAILURE_TECH;
     maze = parser_get_maze(buffer, r);
-    if (maze == NULL || maze->matrix == NULL)
+    if (maze == NULL || maze->matrix == NULL || maze->starts == NULL ||
+        maze->ends == NULL)
         return EXIT_FAILURE_TECH;
     route = dijkstra(maze, maze->starts[0], maze->ends[0]);
     if (route == NULL)
