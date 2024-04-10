@@ -68,6 +68,8 @@ static int check_mat_line(maze_t *maze, char *buffer)
         if (!IS_NUM(buffer[i]))
             return 1;
     n2 = -my_getnbr(&buffer[j]);
+    if (n1 > maze->matrix_size || n2 > maze->matrix_size)
+        return 1;
     populate_matrix(maze, n1, n2);
     return print_tun();
 }
