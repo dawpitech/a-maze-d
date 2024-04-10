@@ -9,6 +9,7 @@
 #include "../include/file_utils.h"
 #include "../include/dijkstra.h"
 #include <criterion/criterion.h>
+#include <fcntl.h>
 #include <stdio.h>
 
 Test(amazed, test_good_file) {
@@ -17,3 +18,4 @@ Test(amazed, test_good_file) {
     const char *av[2] = {"./amazed", NULL};
     cr_assert_eq(amazed(ac, av), 0);
 }
+
