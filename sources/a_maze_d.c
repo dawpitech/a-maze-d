@@ -14,13 +14,38 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-static void show_route(route_t *route, maze_t *maze)
+static
+void exec_while_routing_to_end(route_t *route, maze_t *maze, int *pos,
+    bool *can_start_another_robot)
 {
-    for (int i = 0; i < maze->nrobots; i++) {
-        for (int j = 0; j <= route->weight; j++) {
-            printf("P%d-%d\n", i, route->nodes[j]);
-        }
+    bool is_first_on_line = true;
+    for (int i = 0; i < (int) maze->nrobots; i++) {
+        if (pos[i] == (int) route->weight)
+            continue;
+        if (pos[i] == 0 && !(*can_start_another_robot))
+            continue;
+        if (pos[i] == 0)
+            *can_start_another_robot = false;
+        pos[i] += 1;
+        if (!is_first_on_line)
+            my_putchar(' ');
+        my_printf("P%d-%d", i + 1, route->nodes[pos[i]]);
+        is_first_on_line = false;
     }
+    my_putchar('\n');
+    *can_start_another_robot = true;
+}
+
+static
+void show_route(route_t *route, maze_t *maze)
+{
+    bool can_start_another_robot = true;
+    int pos[maze->nrobots];
+
+    for (int i = 0; i < (int) maze->nrobots; i++)
+        pos[i] = 0;
+    while (route->nodes[pos[maze->nrobots - 1]] != maze->ends[0])
+        exec_while_routing_to_end(route, maze, pos, &can_start_another_robot);
 }
 
 static __attribute__((unused))
