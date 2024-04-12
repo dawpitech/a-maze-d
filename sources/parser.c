@@ -120,6 +120,8 @@ static void print_line(char *buffer)
     int s = my_strstr(buffer, "\n") - buffer;
     char tmp[s];
 
+    if (s <= 0)
+        return;
     my_memset(tmp, 0, s);
     my_strncpy(tmp, buffer, s);
     tmp[s] = '\0';
@@ -136,7 +138,7 @@ static int parse_lines(maze_t *maze, char *buffer)
 {
     ++buffer;
     for (; *(buffer - 1) != '\n' && *buffer != '\0'; ++buffer);
-    for (ssize_t i = 0; buffer[i] != '\0'; i++) {
+    for (ssize_t i = 0; i >= 0 && buffer[i] != '\0'; i++) {
         if (buffer[i] == '#' && buffer[i + 1] == '#')
             get_start_end(maze, &buffer[i]);
         if (buffer[i] == '#' || !check_mat_line(maze, &buffer[i])) {
