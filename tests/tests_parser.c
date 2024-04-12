@@ -54,3 +54,10 @@ Test(parser, test_parser_with_good_buffer) {
     cr_expect_eq(maze_func->ends[0], maze.ends[0]);
     cr_assert_eq(maze_func->nrobots, maze.nrobots);
 }
+
+Test(parser, test_parser_with_empty_buffer) {
+    char *buffer = NULL;
+    int r = 0;
+    cr_assert_null(parser_get_maze(buffer, r));
+}
+
