@@ -37,6 +37,8 @@ SRC += ./sources/solver/dijkstra.c
 
 T_SRC	:=	$(SRC)
 T_SRC	+= ./tests/tests_amazed.c
+T_SRC	+= ./tests/tests_file_utils.c
+T_SRC	+= ./tests/tests_parser.c
 
 SRC	+=	./main.c
 
